@@ -17,13 +17,11 @@ public class RegistrationPage {
         this.driver = driver;
     }
 
-    // Required fields
     private final By firstName = By.id("firstName");
     private final By lastName = By.id("lastName");
     private final By genderMale = By.xpath("//label[text()='Male']");
     private final By mobile = By.id("userNumber");
 
-    // Optional fields
     private final By email = By.id("userEmail");
     private final By subjects = By.id("subjectsInput");
     private final By hobbiesSports = By.xpath("//label[text()='Sports']");
@@ -36,7 +34,6 @@ public class RegistrationPage {
     private final By submitButton = By.id("submit");
     private final By modalTitle = By.id("example-modal-sizes-title-lg");
 
-    // Actions
     public void enterFirstName(String value) {
         driver.findElement(firstName).sendKeys(value);
     }

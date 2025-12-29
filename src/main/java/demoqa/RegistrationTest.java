@@ -5,10 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class RegistrationTest extends BaseTest {
 
-    /*
-     * SMOKE TEST
-     * All required fields only
-     */
     @Test
     void smokeTest_requiredFieldsOnly() {
         RegistrationPage page = new RegistrationPage(driver);
@@ -22,10 +18,6 @@ public class RegistrationTest extends BaseTest {
         assertTrue(page.isSubmissionSuccessful());
     }
 
-    /*
-     * FULL REGISTRATION TEST
-     * All fields filled
-     */
     @Test
     void registration_allFieldsFilled() {
         RegistrationPage page = new RegistrationPage(driver);
@@ -45,10 +37,6 @@ public class RegistrationTest extends BaseTest {
         assertTrue(page.isSubmissionSuccessful());
     }
 
-    /*
-     * ECP NEGATIVE TEST
-     * Missing required field (First Name)
-     */
     @Test
     void registration_missingFirstName_shouldFail() {
         RegistrationPage page = new RegistrationPage(driver);
@@ -62,10 +50,6 @@ public class RegistrationTest extends BaseTest {
                 .contains("Thanks for submitting the form"));
     }
 
-    /*
-     * BOUNDARY VALUE TEST
-     * Mobile less than 10 digits
-     */
     @Test
     void registration_invalidMobile_shouldFail() {
         RegistrationPage page = new RegistrationPage(driver);
@@ -80,18 +64,14 @@ public class RegistrationTest extends BaseTest {
                 .contains("Thanks for submitting the form"));
     }
 
-    /*
-     * PAIRWISE TEST
-     * Required fields combinations
-     */
     @Test
     void registration_pairwiseCombination() {
         RegistrationPage page = new RegistrationPage(driver);
 
-        page.enterFirstName("Alex");      // Valid
-        page.enterLastName("");           // Invalid
-        page.selectMaleGender();          // Valid
-        page.enterMobile("7700123456");   // Valid
+        page.enterFirstName("Alex");
+        page.enterLastName("");
+        page.selectMaleGender();
+        page.enterMobile("7700123456");
         page.submitForm();
 
         assertFalse(driver.getPageSource()
